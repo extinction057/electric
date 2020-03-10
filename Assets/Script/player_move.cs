@@ -10,6 +10,7 @@ public class player_move : MonoBehaviour
     bool canMove = false;
     Sprite img;
     float timestart=0;
+    GameObject handleRepeater=null;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,6 @@ public class player_move : MonoBehaviour
             //        GetComponent<SpriteRenderer>().sprite = img;
             if (Input.GetKey(keyL))
             {
-                Debug.Log("sad");
                 img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run2", typeof(Sprite)) as Sprite;
                 GetComponent<SpriteRenderer>().sprite = img;
                 transform.Translate(Vector3.left * movespeed * Time.deltaTime);
@@ -65,6 +65,15 @@ public class player_move : MonoBehaviour
             {
                
             }
+            if(handleRepeater!=null)
+            {
+                if(Input.GetKeyDown(keyD))
+                {
+                    handleRepeater.transform.SetParent(null);
+                    handleRepeater.GetComponent<repeater>().ishandle = false;
+                    handleRepeater = null;
+                }
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D col)
@@ -74,6 +83,25 @@ public class player_move : MonoBehaviour
             canjump = true;
             canMove = true;
         }
+        
     }
-
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Repeater"))
+        {
+            if (col.GetComponent<repeater>().canhandle && !col.GetComponent<repeater>().ishandle)
+            {
+                Debug.Log("fgd");
+                if (Input.GetKey(keyD))
+                {
+                    if (!col.GetComponent<repeater>().ishandle)
+                    {
+                        col.transform.SetParent(this.transform);
+                        col.GetComponent<repeater>().ishandle = true;
+                        handleRepeater = col.gameObject;
+                    }
+                }
+            }
+        }
+    }
 }

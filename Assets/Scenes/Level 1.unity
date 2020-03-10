@@ -2904,6 +2904,7 @@ GameObject:
   - component: {fileID: 766953711}
   - component: {fileID: 766953715}
   - component: {fileID: 766953713}
+  - component: {fileID: 766953714}
   m_Layer: 0
   m_Name: Delivery
   m_TagString: NextLevel
@@ -2985,10 +2986,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021932602, y: -0.13905168}
+  m_Offset: {x: -0.04675293, y: -0.043911457}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2999,8 +3000,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38737106, y: 0.34154654}
+  m_Size: {x: 2.0419807, y: 2.269164}
   m_EdgeRadius: 0
+--- !u!114 &766953714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766953710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e661796667b718141a48a2f747c8f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 861201061446587529, guid: e9d96db695bf7ab4b81e09c4f2af7008,
+    type: 3}
+  nextLevel: Level 2
 --- !u!95 &766953715
 Animator:
   serializedVersion: 3
@@ -3759,7 +3775,6 @@ MonoBehaviour:
   canvasPrefab: {fileID: 861201061446587529, guid: e9d96db695bf7ab4b81e09c4f2af7008,
     type: 3}
   nowLevel: Level 1
-  nextLevel: Level 2
 --- !u!61 &984774771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6437,9 +6452,9 @@ GameObject:
   - component: {fileID: 1796555861}
   - component: {fileID: 1796555860}
   - component: {fileID: 1796555865}
-  - component: {fileID: 1796555867}
   - component: {fileID: 1796555866}
   - component: {fileID: 1796555868}
+  - component: {fileID: 1796555867}
   m_Layer: 0
   m_Name: player_1
   m_TagString: Player
@@ -6716,7 +6731,6 @@ MonoBehaviour:
   canvasPrefab: {fileID: 861201061446587529, guid: e9d96db695bf7ab4b81e09c4f2af7008,
     type: 3}
   nowLevel: Level 1
-  nextLevel: Level 2
 --- !u!114 &1796555868
 MonoBehaviour:
   m_ObjectHideFlags: 0

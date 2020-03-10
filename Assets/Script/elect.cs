@@ -31,19 +31,21 @@ public class elect : MonoBehaviour
     void elect_dfs(List<Transform> list,List<Transform> listR)
     {
         Transform lastTran = list.Last();
-        Collider2D[] RaP = Physics2D.OverlapCircleAll(transform.position, radius);
+        Collider2D[] RaP = Physics2D.OverlapCircleAll(lastTran.position, radius);
         foreach(Collider2D co in RaP)
         {
-            if(co.transform!=transform&&co.transform.CompareTag("Player"))
+            if(co.gameObject.transform!=transform&&co.gameObject.CompareTag("Player"))
             {
+                Debug.Log("sort1");
                 list.Add(co.transform);
                 return;
             }
         }
         foreach(Collider2D co in RaP)
         {
-            if(co.transform.CompareTag("Repeater")&&!listR.Contains(co.transform))
+            if(co.gameObject.CompareTag("Repeater")&&!listR.Contains(co.transform))
             {
+                Debug.Log("sort2");
                 listR.Add(co.transform);
                 list.Add(co.transform);
                 elect_dfs(list, listR);
@@ -87,7 +89,6 @@ public class elect : MonoBehaviour
     {
         if(!islink&&!startCount)
         {
-            Debug.Log("asas");
             cutTime = Time.fixedTime;
             startCount = true;
         }
@@ -97,7 +98,7 @@ public class elect : MonoBehaviour
             {
                 Debug.Log(Time.fixedTime);
                 startCount = false;
-                GetComponent<LevelChange>().gameOver();
+                GetComponent<GameOver>().gameOver();
             }
         }
     }
