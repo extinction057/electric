@@ -9,6 +9,7 @@ public class repeater : MonoBehaviour
     public bool canhandle;
     public bool canhandlef;
     public Transform parentTran;
+    public Vector3 Rposition;
     void Start()
     {
         
@@ -29,7 +30,7 @@ public class repeater : MonoBehaviour
             GetComponent<Rigidbody2D>().constraints= RigidbodyConstraints2D.None;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             canhandle = false;
-            transform.localPosition = new Vector3(1.32f, 0.779f, 0);
+            transform.localPosition = Rposition;
         }
         else
         {

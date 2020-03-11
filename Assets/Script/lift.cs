@@ -7,6 +7,8 @@ public class lift : MonoBehaviour
     // Start is called before the first frame update
     public float movespeed = 8f;
     bool isup = true;
+    public float maxHeight;
+    public float minHeight;
     void Start()
     {
         
@@ -23,7 +25,7 @@ public class lift : MonoBehaviour
         {
             transform.Translate(Vector3.down * movespeed * Time.deltaTime);
         }
-        if (transform.position.y >= 11.07) isup = false;
-        if (transform.position.y <= 4.57) isup = true;
+        if (transform.position.y >= maxHeight) isup = false;
+        if (transform.position.y <= minHeight) isup = true;
     }
 }

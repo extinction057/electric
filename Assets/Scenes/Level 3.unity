@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 153512243}
   - component: {fileID: 153512242}
   - component: {fileID: 153512241}
+  - component: {fileID: 153512244}
   m_Layer: 0
   m_Name: Delivery
   m_TagString: NextLevel
@@ -1029,6 +1030,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &153512244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153512239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e661796667b718141a48a2f747c8f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 861201061446587529, guid: e9d96db695bf7ab4b81e09c4f2af7008,
+    type: 3}
+  nextLevel: Level 4
 --- !u!1 &158594104
 GameObject:
   m_ObjectHideFlags: 0

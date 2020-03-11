@@ -71,7 +71,7 @@
     <Compile Include="Assets\Script\load.cs" />
     <Compile Include="Assets\Script\player_move.cs" />
     <Compile Include="Assets\Script\repeater.cs" />
-    <Compile Include="Assets\Script\switch_L4.cs" />
+    <Compile Include="Assets\Script\switch_controldoor.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/mynewgame/electric/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

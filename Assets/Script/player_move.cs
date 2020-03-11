@@ -44,15 +44,16 @@ public class player_move : MonoBehaviour
             {
                 img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run2", typeof(Sprite)) as Sprite;
                 GetComponent<SpriteRenderer>().sprite = img;
+                if (handleRepeater != null) handleRepeater.GetComponent<repeater>().Rposition = new Vector3(-1.44f, 0.8f, 0);
                 transform.Translate(Vector3.left * movespeed * Time.deltaTime);
                 timestart = Time.fixedTime;
             }
             if (Input.GetKey(keyR))
             {
-                img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run2", typeof(Sprite)) as Sprite;
+                img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run3", typeof(Sprite)) as Sprite;
                 GetComponent<SpriteRenderer>().sprite = img;
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                transform.Translate(Vector3.left * movespeed * Time.deltaTime);
+                if(handleRepeater!=null) handleRepeater.GetComponent<repeater>().Rposition= new Vector3(1.32f, 0.779f, 0); 
+                transform.Translate(Vector3.right * movespeed * Time.deltaTime);
                 timestart = Time.fixedTime;
             }
             if (Input.GetKeyDown(keyU) && canjump)
