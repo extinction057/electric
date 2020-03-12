@@ -7662,6 +7662,7 @@ MonoBehaviour:
   canhandle: 1
   canhandlef: 1
   parentTran: {fileID: 0}
+  Rposition: {x: 0, y: 0, z: 0}
 --- !u!1 &1625630351
 GameObject:
   m_ObjectHideFlags: 0
@@ -8849,6 +8850,7 @@ GameObject:
   - component: {fileID: 2045964502}
   - component: {fileID: 2045964501}
   - component: {fileID: 2045964500}
+  - component: {fileID: 2045964509}
   m_Layer: 0
   m_Name: player_2
   m_TagString: Player
@@ -9139,6 +9141,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2045964509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045964499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b530219b2b04ee41b71077591bb7086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dustPrefab: {fileID: 6232848011009199191, guid: 322940778b27b6f48976ba52bb9edca2,
+    type: 3}
+  maxHeight: 0
+  heightCheck: 0
 --- !u!1 &2052993189
 GameObject:
   m_ObjectHideFlags: 0
@@ -9546,6 +9564,7 @@ GameObject:
   - component: {fileID: 2131381783}
   - component: {fileID: 2131381782}
   - component: {fileID: 2131381781}
+  - component: {fileID: 2131381790}
   m_Layer: 0
   m_Name: player_1
   m_TagString: Player
@@ -9836,3 +9855,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131381790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131381780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b530219b2b04ee41b71077591bb7086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dustPrefab: {fileID: 6232848011009199191, guid: 322940778b27b6f48976ba52bb9edca2,
+    type: 3}
+  maxHeight: 0
+  heightCheck: 0

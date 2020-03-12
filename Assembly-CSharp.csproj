@@ -66,9 +66,11 @@
     <Compile Include="Assets\Script\NextLevel.cs" />
     <Compile Include="Assets\Script\StartPlayer.cs" />
     <Compile Include="Assets\Script\WallExplode.cs" />
+    <Compile Include="Assets\Script\WallExplodeChain.cs" />
     <Compile Include="Assets\Script\elect.cs" />
     <Compile Include="Assets\Script\lift.cs" />
     <Compile Include="Assets\Script\load.cs" />
+    <Compile Include="Assets\Script\player_anime.cs" />
     <Compile Include="Assets\Script\player_move.cs" />
     <Compile Include="Assets\Script\repeater.cs" />
     <Compile Include="Assets\Script\switch_controldoor.cs" />

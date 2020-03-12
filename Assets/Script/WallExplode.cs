@@ -29,6 +29,10 @@ public class WallExplode : MonoBehaviour
     void destroyIt()
     {
         isdestroy = true;
-   //     Debug.Log(isdestroy);
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+        GetComponent<BoxCollider2D>().enabled = false;
+        //     Debug.Log(isdestroy);
     }
 }

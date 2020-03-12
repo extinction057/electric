@@ -8,7 +8,7 @@ public class load : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SceneManager.LoadScene("Level 1");
+        Application.Quit();
     }
 
     // Update is called once per frame

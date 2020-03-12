@@ -10,7 +10,9 @@ public class player_move : MonoBehaviour
     bool canMove = false;
     Sprite img;
     float timestart=0;
+    float timestart2 = 0;
     GameObject handleRepeater=null;
+    bool jumpimgupdate=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,34 +26,40 @@ public class player_move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //       Physics.gravity = new Vector3(0, -50, 0);
-        //      img = Resources.Load("Sprite and Textures/玩家/TV_static/static1", typeof(Sprite)) as Sprite
         if (canMove)
         {
-            if ((int)(Time.fixedTime-timestart) / 2 % 2 == 0)
+            if (canjump&&!jumpimgupdate)
             {
-                img = Resources.Load("Sprite and Textures/玩家/TV_static/static1", typeof(Sprite)) as Sprite;
-                GetComponent<SpriteRenderer>().sprite = img;
-            }
-            else
-            {
-                img = Resources.Load("Sprite and Textures/玩家/TV_static/static2", typeof(Sprite)) as Sprite;
-                GetComponent<SpriteRenderer>().sprite = img;
+                if ((int)(Time.fixedTime - timestart) / 2 % 2 == 0)
+                {
+                    img = Resources.Load("Sprite and Textures/玩家/TV_static/static1", typeof(Sprite)) as Sprite;
+                    GetComponent<SpriteRenderer>().sprite = img;
+                }
+                else
+                {
+                    img = Resources.Load("Sprite and Textures/玩家/TV_static/static2", typeof(Sprite)) as Sprite;
+                    GetComponent<SpriteRenderer>().sprite = img;
+                }
             }
             transform.eulerAngles = new Vector3(0, 0, 0);
-            //        GetComponent<SpriteRenderer>().sprite = img;
             if (Input.GetKey(keyL))
             {
-                img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run2", typeof(Sprite)) as Sprite;
-                GetComponent<SpriteRenderer>().sprite = img;
+                if (canjump && !jumpimgupdate)
+                {
+                    img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run2", typeof(Sprite)) as Sprite;
+                    GetComponent<SpriteRenderer>().sprite = img;
+                }
                 if (handleRepeater != null) handleRepeater.GetComponent<repeater>().Rposition = new Vector3(-1.44f, 0.8f, 0);
                 transform.Translate(Vector3.left * movespeed * Time.deltaTime);
                 timestart = Time.fixedTime;
             }
             if (Input.GetKey(keyR))
             {
-                img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run3", typeof(Sprite)) as Sprite;
-                GetComponent<SpriteRenderer>().sprite = img;
+                if (canjump && !jumpimgupdate)
+                {
+                    img = Resources.Load("Sprite and Textures/玩家/TV_Run/Run3", typeof(Sprite)) as Sprite;
+                    GetComponent<SpriteRenderer>().sprite = img;
+                }
                 if(handleRepeater!=null) handleRepeater.GetComponent<repeater>().Rposition= new Vector3(1.32f, 0.779f, 0); 
                 transform.Translate(Vector3.right * movespeed * Time.deltaTime);
                 timestart = Time.fixedTime;
@@ -62,11 +70,22 @@ public class player_move : MonoBehaviour
                 rig.AddForce(Vector3.up * 950f);
                 canjump = false;
             }
-            else
+            if (jumpimgupdate)
             {
-               
+                img = Resources.Load("Sprite and Textures/玩家/TV_Jump/Jump2", typeof(Sprite)) as Sprite;
+                GetComponent<SpriteRenderer>().sprite = img;
+                if(GetComponent<player_anime>().maxHeight>transform.position.y)
+                {
+                    img = Resources.Load("Sprite and Textures/玩家/TV_Jump/Jump4", typeof(Sprite)) as Sprite;
+                    GetComponent<SpriteRenderer>().sprite = img;
+                }
             }
-            if(handleRepeater!=null)
+            if(Time.fixedTime<timestart2+0.5f)
+            {
+                img = Resources.Load("Sprite and Textures/玩家/TV_Jump/Jump5", typeof(Sprite)) as Sprite;
+                GetComponent<SpriteRenderer>().sprite = img;
+            }
+            if (handleRepeater!=null)
             {
                 if(Input.GetKeyDown(keyD))
                 {
@@ -77,14 +96,26 @@ public class player_move : MonoBehaviour
             }
         }
     }
+    void hasland()
+    {
+        jumpimgupdate = false;
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground")|| col.gameObject.CompareTag("Belt"))
         {
             canjump = true;
             canMove = true;
+            timestart2 = Time.fixedTime;
+            Invoke("hasland", 0.5f);
         }
-        
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Belt"))
+        {
+            jumpimgupdate = true;
+        }
     }
     private void OnTriggerStay2D(Collider2D col)
     {
@@ -103,6 +134,10 @@ public class player_move : MonoBehaviour
                     }
                 }
             }
+        }
+        if (col.gameObject.CompareTag("Belt"))
+        {
+            transform.Translate(Vector3.right * movespeed / 8 * Time.deltaTime);
         }
     }
 }
