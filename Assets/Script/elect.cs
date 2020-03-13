@@ -66,19 +66,21 @@ public class elect : MonoBehaviour
         }
         List<Transform> list = new List<Transform>();
         List<Transform> listR = new List<Transform>();
+        List<Vector3> listRandom = new List<Vector3>();
         list.Add(this.transform);
         listR.Add(this.transform);
         elect_dfs(list, listR);
-        Debug.Log(list.Count);
-        if (list.Count > 0)
+        LineRandom(list,listRandom);
+ //       Debug.Log(list.Count);
+        if (listRandom.Count > 0)
         {
             islink = true;
             startCount = false;
             Debug.Log(islink);
-            LR.positionCount=list.Count;
-            for (int i=0;i<list.Count;i++)
+            LR.positionCount=listRandom.Count;
+            for (int i=0;i<listRandom.Count;i++)
             {
-                LR.SetPosition(i, list[i].position); 
+                LR.SetPosition(i, listRandom[i]); 
             }
             return;
         }
@@ -102,5 +104,23 @@ public class elect : MonoBehaviour
             }
         }
     }
-
+    void LineRandom(List<Transform> list,List<Vector3> listRandom)
+    {
+        int n = list.Count;
+        for(int i=0;i<n-1;i++)
+        {
+            float k;
+            k = (list[i + 1].position.y - list[i].position.y) / (list[i + 1].position.x - list[i].position.x);
+            listRandom.Add(list[i].position);
+            for(int j=1;j<10;j++)
+            {
+                float r_y = Random.Range(-0.3f, 0.3f);
+                float x = list[i].position.x + (list[i + 1].position.x - list[i].position.x) / 10 * j;
+                float y = list[i].position.y + (list[i + 1].position.x - list[i].position.x) / 10 * j * k + r_y;
+                Vector3 node = new Vector3(x, y, 0);
+                listRandom.Add(node);
+            }
+        }
+        if(n>0) listRandom.Add(list[n-1].position);
+    }
 }

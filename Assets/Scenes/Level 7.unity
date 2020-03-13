@@ -1800,8 +1800,8 @@ GameObject:
   - component: {fileID: 266744082}
   - component: {fileID: 266744081}
   - component: {fileID: 266744080}
-  - component: {fileID: 266744079}
   - component: {fileID: 266744088}
+  - component: {fileID: 266744079}
   m_Layer: 0
   m_Name: player_2
   m_TagString: Player
@@ -1827,7 +1827,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1858,8 +1858,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.15872955
+        time: 0.0136528015
+        value: 0.08730316
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -10930,9 +10930,9 @@ GameObject:
   - component: {fileID: 1311278469}
   - component: {fileID: 1311278468}
   - component: {fileID: 1311278467}
-  - component: {fileID: 1311278466}
   - component: {fileID: 1311278465}
   - component: {fileID: 1311278474}
+  - component: {fileID: 1311278466}
   m_Layer: 0
   m_Name: player_1
   m_TagString: Player
@@ -10972,7 +10972,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11003,8 +11003,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.010238647
-        value: 0.19047546
+        time: 0.0136528015
+        value: 0.08730316
         inSlope: 0
         outSlope: 0
         tangentMode: 0
