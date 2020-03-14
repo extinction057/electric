@@ -5,7 +5,7 @@ using UnityEngine;
 public class lift : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float movespeed = 8f;
+    public float movespeed = 10f;
     bool isup = true;
     public float maxHeight;
     public float minHeight;

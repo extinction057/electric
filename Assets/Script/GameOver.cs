@@ -10,9 +10,11 @@ public class GameOver : MonoBehaviour
     GameObject StartAnime;
     public string nowLevel;
     Vector3 startPostion;
+    public AudioSource SoundPlayer;
     void Awake()
     {
         startPostion = transform.position;
+        SoundPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,9 @@ public class GameOver : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Stab"))
         {
+            AudioClip clip = Resources.Load<AudioClip>("Audio/gameover");
+            SoundPlayer.clip = clip;
+            SoundPlayer.PlayOneShot(clip);
             gameOver();
         }
     }

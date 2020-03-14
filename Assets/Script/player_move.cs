@@ -13,6 +13,7 @@ public class player_move : MonoBehaviour
     float timestart2 = 0;
     GameObject handleRepeater=null;
     bool jumpimgupdate=false;
+    public AudioSource SoundPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class player_move : MonoBehaviour
     }
     private void Awake()
     {
-
+        SoundPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,7 +68,10 @@ public class player_move : MonoBehaviour
             if (Input.GetKeyDown(keyU) && canjump)
             {
                 Rigidbody2D rig = GetComponent<Rigidbody2D>();
-                rig.AddForce(Vector3.up * 950f);
+                AudioClip clip = Resources.Load<AudioClip>("Audio/jump");
+                SoundPlayer.clip = clip;
+                SoundPlayer.PlayOneShot(clip);
+                rig.AddForce(Vector3.up * 1000f);
                 canjump = false;
             }
             if (jumpimgupdate)
@@ -121,7 +125,7 @@ public class player_move : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Repeater"))
         {
-            if (col.GetComponent<repeater>().canhandle && !col.GetComponent<repeater>().ishandle)
+            if (col.GetComponent<repeater>().canhandle && !col.GetComponent<repeater>().ishandle&& col.GetComponent<repeater>().canhandlef)
             {
                 Debug.Log("fgd");
                 if (Input.GetKey(keyD))

@@ -12,9 +12,10 @@ public class switch_controldoor : MonoBehaviour
     bool doorExist = true;
     public float udoor;
     public float ddoor;
-    void Start()
+    public AudioSource SoundPlayer;
+    void Awake()
     {
-        
+        SoundPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +38,9 @@ public class switch_controldoor : MonoBehaviour
         if(col.gameObject.CompareTag("Repeater")&& ison)
         {
             GetComponent<SpriteRenderer>().sprite= Resources.Load("Sprite and Textures/开关/switch_on", typeof(Sprite)) as Sprite;
+            AudioClip clip = Resources.Load<AudioClip>("Audio/switch_onmp3");
+            SoundPlayer.clip = clip;
+            SoundPlayer.PlayOneShot(clip);
             doorOpen = true;
         }
     }

@@ -12,11 +12,13 @@ public class WallExplodeChain : MonoBehaviour
     SpriteRenderer sp;
     GameObject[] trap;
     int i = 0;
+    public AudioSource SoundPlayer;
     void Awake()
     {
         //    sp = GetComponent<SpriteRenderer>();
         //  Invoke("destroyIt", 0.2f);
         trap = GameObject.FindGameObjectsWithTag("Trap").OrderBy(g => g.transform.GetSiblingIndex()).ToArray();
+        SoundPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,9 @@ public class WallExplodeChain : MonoBehaviour
         if (col.gameObject.CompareTag("Repeater") && ison)
         {
             GetComponent<SpriteRenderer>().sprite = Resources.Load("Sprite and Textures/开关/switch_on", typeof(Sprite)) as Sprite;
+            AudioClip clip = Resources.Load<AudioClip>("Audio/switch_onmp3");
+            SoundPlayer.clip = clip;
+            SoundPlayer.PlayOneShot(clip);
             isdestroy = true;
         }
     }
